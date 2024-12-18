@@ -14,10 +14,6 @@ const animalShelterData = {
 };
 
 app.use((request, response, next) => {
-    response.status(404).send("<h1>404 NOT FOUND </h1>")
-})
-
-app.use((request, response, next) => {
     console.log(request.method + "/" + request.url)
     next()
 })
@@ -34,6 +30,11 @@ app.get("/api/shelters", (request, response) => {
     response.json(animalShelterData.shelters)
 })
 
+app.use((request, response, next) => {
+    response.status(404).send("<h1>404 NOT FOUND </h1>")
+})
+
+
 app.get("/docs", (request, response) => {
     response.send("Go to /api/cat to see cats for adoption and /api/shelters to see shelters in the area")
 })
@@ -42,15 +43,6 @@ app.get("/adopt/cat", (request, response) => {
     response.send("A cat you can adopt is " + animalShelterData.cats[0].name)
 })
 
-app.use((request, response, next) => {
-    response.status(404).send("404 NOT FOUND")
-})
-
-
-app.use((request, response, next) => {
-    console.log(request.method + "/" + request.url)
-    next()
-})
 
 app.listen(3000, () => {
     console.log("Server is running")
