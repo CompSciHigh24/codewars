@@ -18,8 +18,9 @@ app.use((request, response, next) => {
     next()
 })
 
-app.get("/", (request, response) => {
+app.get("/", (request, response, next) => {
     response.send("<h1>Welcome to the Animal Shelter Network </h1>")
+    next()
 })
 
 app.get("/api/cat", (request, response) => {
