@@ -42,10 +42,6 @@ app.use((request, response, next) => {
     response.status(404).send("404 NOT FOUND")
 })
 
-app.use((request, response, next) => {
-    response.status(404).send("<h1>404 NOT FOUND </h1>")
-})
-
 app.listen(3000, () => {
     console.log("Server is running")
 })
